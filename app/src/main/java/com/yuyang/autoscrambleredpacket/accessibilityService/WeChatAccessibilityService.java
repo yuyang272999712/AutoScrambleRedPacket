@@ -29,7 +29,7 @@ import static com.yuyang.autoscrambleredpacket.ShieldKeyWordActivity.KEY_WORDS;
  * AccessibilityService就是一个后台监控服务，设计用来帮助使用障碍的人士
  *
  * 在手机无障碍设置中开启
- * 微信6.5.4
+ * 微信6.6.2
  */
 
 public class WeChatAccessibilityService extends AccessibilityService {
@@ -162,14 +162,14 @@ public class WeChatAccessibilityService extends AccessibilityService {
             List<AccessibilityNodeInfo> list;//节点集合
             switch (actionType){
                 case 0://开红包
-                    list = nodeInfo.findAccessibilityNodeInfosByViewId("com.tencent.mm:id/c2i");//ZHU yuyang 版本更换需要修改的地方
+                    list = nodeInfo.findAccessibilityNodeInfosByViewId("com.tencent.mm:id/c4j");//ZHU yuyang 版本更换需要修改的地方
                     for (AccessibilityNodeInfo item : list) {
                         item.performAction(AccessibilityNodeInfo.ACTION_CLICK);
                         item.recycle();
                     }
                     break;
                 case 1://退出红包
-                    list = nodeInfo.findAccessibilityNodeInfosByViewId("com.tencent.mm:id/ho");//ZHU yuyang 版本更换需要修改的地方
+                    list = nodeInfo.findAccessibilityNodeInfosByViewId("com.tencent.mm:id/hx");//ZHU yuyang 版本更换需要修改的地方
                     for (AccessibilityNodeInfo item : list) {
                         item.performAction(AccessibilityNodeInfo.ACTION_CLICK);
                         item.recycle();
@@ -190,13 +190,13 @@ public class WeChatAccessibilityService extends AccessibilityService {
         }
         AccessibilityNodeInfo rootNode = getRootInActiveWindow();
         if (rootNode != null) {
-            //聊天界面：com.tencent.mm:id/ada是红包的item
-            List<AccessibilityNodeInfo> listChat = rootNode.findAccessibilityNodeInfosByViewId("com.tencent.mm:id/ada");//ZHU yuyang 版本更换需要修改的地方
+            //聊天界面：com.tencent.mm:id/ad8是红包的item
+            List<AccessibilityNodeInfo> listChat = rootNode.findAccessibilityNodeInfosByViewId("com.tencent.mm:id/ad8");//ZHU yuyang 版本更换需要修改的地方
             if (listChat != null && listChat.size() > 0) {//如果是在聊天页面，那肯定能找到唯一的一个node
                 traversalChatNodes(listChat);
             }
-            //微信列表界面：com.tencent.mm:id/apr 每个人的item
-            List<AccessibilityNodeInfo> listWeixin = rootNode.findAccessibilityNodeInfosByViewId("com.tencent.mm:id/apr");//ZHU yuyang 版本更换需要修改的地方
+            //微信列表界面：com.tencent.mm:id/app 每个人的item
+            List<AccessibilityNodeInfo> listWeixin = rootNode.findAccessibilityNodeInfosByViewId("com.tencent.mm:id/app");//ZHU yuyang 版本更换需要修改的地方
             if (listWeixin != null && listWeixin.size() > 0) {
                 traversalWeixinNodes(listWeixin);
             }
@@ -213,8 +213,8 @@ public class WeChatAccessibilityService extends AccessibilityService {
         AccessibilityNodeInfo unOpenPerson = null;
         for (int i=0; i<list.size(); i++){
             AccessibilityNodeInfo nodeInfo = list.get(i);
-            List<AccessibilityNodeInfo> childContents = nodeInfo.findAccessibilityNodeInfosByViewId("com.tencent.mm:id/apv");//信息消息内容TextView ZHU yuyang 版本更换需要修改的地方
-            List<AccessibilityNodeInfo> childRedDots = nodeInfo.findAccessibilityNodeInfosByViewId("com.tencent.mm:id/iu");//新信息提醒红点 ZHU yuyang 版本更换需要修改的地方
+            List<AccessibilityNodeInfo> childContents = nodeInfo.findAccessibilityNodeInfosByViewId("com.tencent.mm:id/apt");//信息消息内容TextView ZHU yuyang 版本更换需要修改的地方
+            List<AccessibilityNodeInfo> childRedDots = nodeInfo.findAccessibilityNodeInfosByViewId("com.tencent.mm:id/j4");//新信息提醒红点 ZHU yuyang 版本更换需要修改的地方
             if (childRedDots != null && childRedDots.size() > 0
                     && childContents != null && childContents.size() > 0){
                 String content = childContents.get(0).getText().toString();
@@ -251,7 +251,7 @@ public class WeChatAccessibilityService extends AccessibilityService {
             AccessibilityNodeInfo nodeInfo = list.get(i);
             List<AccessibilityNodeInfo> getRedPacketNodes = nodeInfo.findAccessibilityNodeInfosByText("领取红包");
             if (getRedPacketNodes != null && getRedPacketNodes.size() > 0){
-                List<AccessibilityNodeInfo> remarkNodes = nodeInfo.findAccessibilityNodeInfosByViewId("com.tencent.mm:id/aea");//红包备注TextView ZHU yuyang 版本更换需要修改的地方
+                List<AccessibilityNodeInfo> remarkNodes = nodeInfo.findAccessibilityNodeInfosByViewId("com.tencent.mm:id/ae9");//红包备注TextView ZHU yuyang 版本更换需要修改的地方
                 if (remarkNodes != null && remarkNodes.size()>0){
                     String remarkStr = remarkNodes.get(0).getText().toString();
                     //红包备注不包含敏感词

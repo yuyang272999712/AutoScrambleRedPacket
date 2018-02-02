@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">自动抢红包</string>
-    <string name="my_accessibility_description">微信(6.6.1版本)自动抢红包</string>
-    <string name="sub_title">对应微信版本：6.6.1</string>
+    <string name="my_accessibility_description">微信(6.6.2版本)自动抢红包</string>
+    <string name="sub_title">对应微信版本：6.6.2</string>
 </resources>

@@ -7,6 +7,7 @@ import android.util.Log;
  */
 
 public class LogUtils {
+    //TODO yuyang 打包前请关闭debug模式
     public static boolean isDebug = false;
 
     public static void e(String tag, String message){
